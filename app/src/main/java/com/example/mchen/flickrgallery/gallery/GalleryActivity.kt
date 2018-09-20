@@ -52,7 +52,7 @@ class GalleryActivity : AppCompatActivity() {
 
         if ((maxPage?:10) < page) return
 
-        isLoading = true
+        isLoading = true 
         var service = FlickrService(FlickrConfig.apiKey)
         var result = service.getFlickPhotos("", page)
         //var list: Photos
@@ -75,6 +75,9 @@ class GalleryActivity : AppCompatActivity() {
         if (list != null) {
             //mRecyclerView.adapter = GalleryAdapter(mContext, list)
             Log.d(TAG, "list is no null. gallery list size:" + galleryList.size)
+
+            // must in order notify insert, insert elements to list then notify dataset change.
+            // otherwise will blank
             mRecyclerView.adapter.notifyItemInserted(galleryList.size - list.size)
             galleryList.addAll(list)
 
