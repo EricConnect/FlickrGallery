@@ -21,7 +21,6 @@ import java.lang.Exception
 import java.util.*
 
 class GalleryAdapter(var context: Context, var list:ArrayList<Photo>): RecyclerView.Adapter<ViewHolder>(){
-    private lateinit var onLoadMoreListener: OnLoadMoreListener
 
     interface OnLoadMoreListener{
         fun onLoadMore()
@@ -54,7 +53,6 @@ class GalleryAdapter(var context: Context, var list:ArrayList<Photo>): RecyclerV
                         holder.itemImage.setImageBitmap(resource)
                         holder.itemDimension.text = String.format("%d * %d", resource?.width,resource?.height)
                         holder.itemSize.text = String.format("%dk  -%d",(resource?.byteCount?:0)/1024, position)
-                        //holder.itemView.layoutParams.height = ((resource?.height ?: 0) + 75)*2
                     }
 
                 })
