@@ -52,7 +52,7 @@ class GalleryActivity : AppCompatActivity() {
 
         if ((maxPage?:10) < page) return
 
-        isLoading = true 
+        isLoading = true
         var service = FlickrService(FlickrConfig.apiKey)
         var result = service.getFlickPhotos("", page)
         //var list: Photos
